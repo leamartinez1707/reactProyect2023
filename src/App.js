@@ -1,13 +1,14 @@
 import './App.css';
-import NavBar from './components/navbar/NavBar';
-import CartWidget from './components/cartWidget/CartWidget';
+import BarraNav from './components/navbar/BarraNav';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
+// import Cards from './components/cards/Cards'
+
 
 function App() {
   return (
     <div className="App">
-        <NavBar/>
-        <ItemListContainer/>
+        <BarraNav/>
+        <ItemListContainer greeting={'Shop now'}/>
     </div>
   );
 }

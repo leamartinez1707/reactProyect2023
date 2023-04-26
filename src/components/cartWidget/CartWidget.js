@@ -1,16 +1,26 @@
 import React from 'react'
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 
 const CartWidget = () => {
+
+  const bagUnits = [
+    {title: 't-shirt', description: 'cotton', precio: '$75'},
+    {title: 'short', description: 'beach short', precio: '$15'}
+];
+
   return (
-    <div className='carrito_nav'>
-      <span>
-      <img src="https://static.vecteezy.com/system/resources/previews/001/504/962/non_2x/shopping-cart-icon-free-vector.jpg" width="50px" alt="" />
-                </span>
-                </div>
-  )
-}
+  
+        <div className="bag-unit">
+        <Button variant="outline-light">
+        <box-icon name='shopping-bag'></box-icon>
+        <Badge text='black' bg='light'>{bagUnits.length}</Badge>
+        </Button>  
+        </div>  
+)}
 
 export default CartWidget
 
 
 // rafce
+
