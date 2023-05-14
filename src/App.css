@@ -3,7 +3,7 @@
   text-decoration: none;
 }
 
-.categories:hover{
+.categories:hover {
   transition: 0.5s;
   transform: scale(1.1);
 }
