@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from '../pages/Home'
-import Checkout from '../pages/Checkout'
 import BarraNav from '../components/navbar/BarraNav'
+import ItemView from '../pages/ItemView'
+import CategoryView from '../pages/CategoryView'
 
 const Rutas = () => {
 
@@ -12,9 +13,13 @@ const Rutas = () => {
             name: "Home"
         },
         {
-            path: "/checkout",
-            name: "Checkout"
+            path: "/category/1",
+            name: "Phones"
         },
+        {
+            path: "/category/2",
+            name: "Tablets"
+        }
     ]
 
     return (
@@ -22,8 +27,8 @@ const Rutas = () => {
             <BarraNav navbar_items={navbar_items} />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/checkout' element={<Checkout />} />
-                {/* <Route path='/item/:id' element={<ItemDetail/>} /> */}
+                <Route path='/category/:id' element={<CategoryView />} />
+                <Route path='/item/:id' element={<ItemView/>} />
             </Routes>
         </BrowserRouter>
     )
