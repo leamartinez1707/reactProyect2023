@@ -1,14 +1,15 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
+import ItemCount from '../itemCount/ItemCount';
 
-const ItemDetail = ({title, img, description, price, stock }) => {
+const ItemDetail = ({ title, img, description, price, stock }) => {
 
   return (
 
     <div className='item-detail'>
 
-      <Card
-        style={{ width: '16rem' }}>
+      <Card className='m-4 p-2'
+        style={{ width: '14rem' }}>
         <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-100'
         />
         <Card.Body>
@@ -23,10 +24,14 @@ const ItemDetail = ({title, img, description, price, stock }) => {
           <Card.Text>
             {stock >= 1 ? 'En stock' : 'No disponible'}
           </Card.Text>
-          <button variant="danger" className='btn bg-danger text-white'>Agregar al carrito</button>
+          <div>
+            <ItemCount />
+            <button variant="danger" className='btn bg-danger text-white'>Agregar al carrito</button>
+          </div>
         </Card.Body>
       </Card>
     </div>
-  )};
+  )
+};
 
 export default ItemDetail
