@@ -3,30 +3,33 @@ import ItemDetail from '../itemDetail/ItemDetail'
 import { useState, useEffect } from 'react'
 import { getProductById } from '../../productsAsync'
 import { useParams } from 'react-router-dom'
+import { Spinner } from 'react-bootstrap';
 
 const ItemDetailContainer = () => {
 
-
+  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState();
   const { id } = useParams();
-  console.log(id)
 
   useEffect(() => {
+    setLoading(true)
     getProductById(id)
       .then(response => {
         setProduct(response)
-        console.log(response)
+        setLoading(false)
       })
       .catch(error => {
         console.error(error)
       })
-  }, [])
+  }, [id])
 
   return (
     <div className='detailContainer'>
-      <h1>Detalles del producto seleccionado</h1>
-      <hr />
-      <ItemDetail {...product} />
+      <h1 className='m-2 p-2'>Information about the product</h1>
+      {loading && <Spinner />}
+      {!loading &&
+        <ItemDetail {...product} />
+      }
     </div>
   )
 }

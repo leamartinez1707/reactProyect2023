@@ -13,11 +13,11 @@ const Rutas = () => {
             name: "Home"
         },
         {
-            path: "/category/1",
+            path: "/category/phones",
             name: "Phones"
         },
         {
-            path: "/category/2",
+            path: "/category/tablets",
             name: "Tablets"
         }
     ]

@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import { ItemCount } from '../itemCount/ItemCount';
 
 const ItemDetail = ({title, img, description, price, stock }) => {
 
@@ -24,7 +23,6 @@ const ItemDetail = ({title, img, description, price, stock }) => {
           <Card.Text>
             {stock >= 1 ? 'En stock' : 'No disponible'}
           </Card.Text>
-          <ItemCount/>
           <button variant="danger" className='btn bg-danger text-white'>Agregar al carrito</button>
         </Card.Body>
       </Card>

@@ -8,13 +8,13 @@ const Item = ({ id, title, img, price, stock, description }) => {
     const navigate = useNavigate()
     return (
 
-            <Card
-                style={{ width: '12rem' }}>
-                <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-75'
+            <Card 
+                className='card-item'>
+                <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-100'
                 />
                 <Card.Body>
-                    <Card.Title className='fs-5'>{title}</Card.Title>
-                    <Card.Text className='fs-6'>
+                    <Card.Title className=''>{title}</Card.Title>
+                    <Card.Text className=''>
                         {description}
                     </Card.Text>
                     <Card.Text>
@@ -24,7 +24,9 @@ const Item = ({ id, title, img, price, stock, description }) => {
                     <Card.Text>
                         {stock >= 1 ? 'En stock' : 'Sin stock'}
                     </Card.Text>
-                    <Button variant="danger" onClick={() => navigate(`/item/${id}`)}>Ver más</Button>
+                    <div className='d-flex justify-content-center align-items-center'>
+                    <Button className='btn-verMas' variant="danger" onClick={() => navigate(`/item/${id}`)}>Ver más</Button>
+                    </div>
                 </Card.Body>
             </Card>
     )}

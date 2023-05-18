@@ -6,7 +6,6 @@ export const ItemCount = () => {
     const [counter, setCounter] = useState(0)
 
     if(counter < 0){
-        //  alert('La cantidad no puede ser menor a 0 unidades.')
          setCounter(0)
         }
 

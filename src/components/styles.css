@@ -1,16 +1,55 @@
-.itemList-prod{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: antiquewhite;
-}
-.main-itemList{
-
-    display: flex;
-    gap: 2px;
-    width: 100%;
-}
 .item-detail{
     display: flex;
     justify-content: center;
 }
+.main-itemList{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 80%;
+}
+.card-item{
+    margin: 25px;
+    width: 10rem;
+    padding: 0;
+}
+.itemList-prod{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-itemList{
+        width: 100%;
+    }
+    .card-item{
+        display: flex;
+        width: 5rem;
+        margin: 5px;
+        padding: 1px;
+        justify-content: center;
+    }
+    .card-text{
+        font-size: 0.4rem;
+    }
+    .title-h1 h1{
+        font-size: 1rem;
+    }
+    .card-title{
+        font-size: 0.6rem;
+    }
+
+    .btn-verMas {
+        display: flex;
+        width: 1rem;
+        height: 1rem;
+        text-align: center;
+        font-size: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+
+  

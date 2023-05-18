@@ -13,6 +13,7 @@ const BarraNav = (props) => {
   const navigate = useNavigate()
   return (
 
+    <div className="navbar-div">
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand onClick={() => navigate(`/`)} className='nav_img'>
@@ -33,6 +34,7 @@ const BarraNav = (props) => {
         <CartWidget />
       </Container>
     </Navbar>
+    </div>
   )
 }
 
