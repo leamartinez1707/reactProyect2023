@@ -1,6 +1,7 @@
 
-import './App.css';
 import Rutas from './routes/Rutas';
+import './App.css';
+import './components/styles.css'
 
 
 function App() {

@@ -1,14 +1,14 @@
 import React from 'react'
 import ItemDetail from '../itemDetail/ItemDetail'
 import { useState, useEffect } from 'react'
-import { getProductById, getProducts } from '../../productsAsync'
+import { getProductById } from '../../productsAsync'
 import { useParams } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
 
 
   const [product, setProduct] = useState();
-  const {id} = useParams();
+  const { id } = useParams();
   console.log(id)
 
   useEffect(() => {
@@ -23,10 +23,10 @@ const ItemDetailContainer = () => {
   }, [])
 
   return (
-    <div>
+    <div className='detailContainer'>
       <h1>Detalles del producto seleccionado</h1>
       <hr />
-      <ItemDetail {...product}/>
+      <ItemDetail {...product} />
     </div>
   )
 }

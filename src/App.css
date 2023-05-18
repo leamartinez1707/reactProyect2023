@@ -1,6 +1,10 @@
 .App {
   text-align: center;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 .categories:hover {

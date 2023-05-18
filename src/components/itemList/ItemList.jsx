@@ -5,9 +5,12 @@ const ItemList = ({ products }) => {
 
     return (
 
-            <div className='align-items-center d-flex justify-content-center'>
-            {products.map(pdts => <Item key={pdts.id} {... pdts} /> )}
-            </div>
-    )}
+        <div className='main-itemList'>
+            {products.map(pdts =>
+                <Item key={pdts.id} {...pdts}
+                />)}
+        </div>
+    )
+}
 
 export default ItemList

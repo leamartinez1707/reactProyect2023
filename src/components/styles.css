@@ -1,0 +1,16 @@
+.itemList-prod{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.main-itemList{
+
+    display: flex;
+    gap: 2px;
+    width: 100%;
+}
+.item-detail{
+    display: flex;
+    justify-content: center;
+}
