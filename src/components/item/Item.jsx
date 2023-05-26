@@ -18,14 +18,14 @@ const Item = ({ id, title, img, price, stock, description }) => {
                     {description}
                 </Card.Text>
                 <Card.Text>
-                    {'Precio $'}
+                    {'Price $'}
                     {price}
                 </Card.Text>
                 <Card.Text>
-                    {stock >= 1 ? 'En stock' : 'Sin stock'}
+                    {stock >= 1 ? 'In stock' : 'No stock'}
                 </Card.Text>
                 <div className='d-flex justify-content-center align-items-center'>
-                    <Button className='btn-verMas' variant="danger" onClick={() => navigate(`/item/${id}`)}>Ver más</Button>
+                    <Button className='btn-verMas' variant="danger" onClick={() => navigate(`/item/${id}`)}>Item detail</Button>
                 </div>
             </Card.Body>
         </Card>

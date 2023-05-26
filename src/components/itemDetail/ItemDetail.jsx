@@ -18,15 +18,15 @@ const ItemDetail = ({ title, img, description, price, stock }) => {
             {description}
           </Card.Text>
           <Card.Text>
-            {'Precio $'}
+            {'Price $'}
             {price}
           </Card.Text>
           <Card.Text>
-            {stock >= 1 ? 'En stock' : 'No disponible'}
+            {stock >= 1 ? 'In stock' : 'No stock'}
           </Card.Text>
           <div>
             <ItemCount />
-            <button variant="danger" className='btn bg-danger text-white'>Agregar al carrito</button>
+            <button variant="danger" className='btn bg-danger text-white'>Add to cart  </button>
           </div>
         </Card.Body>
       </Card>
