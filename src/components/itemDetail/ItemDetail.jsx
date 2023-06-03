@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount/ItemCount';
 
-const ItemDetail = ({ title, img, description, price, stock }) => {
+const ItemDetail = ({item}) => {
 
   return (
 
@@ -10,22 +10,22 @@ const ItemDetail = ({ title, img, description, price, stock }) => {
 
       <Card className='m-4 p-2'
         style={{ width: '14rem' }}>
-        <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-100'
+        <Card.Img variant="top" src={item.img} alt='Description image' className='w-100 h-100'
         />
         <Card.Body>
-          <Card.Title className='fs-5'>{title}</Card.Title>
+          <Card.Title className='fs-5'>{item.title}</Card.Title>
           <Card.Text className='fs-6'>
-            {description}
+            {item.description}
           </Card.Text>
           <Card.Text>
             {'Price $'}
-            {price}
+            {item.price}
           </Card.Text>
           <Card.Text>
-            {stock >= 1 ? 'In stock' : 'No stock'}
+            {item.stock >= 1 ? 'In stock' : 'No stock'}
           </Card.Text>
           <div>
-            <ItemCount />
+            <ItemCount item={item}/>
             <button variant="danger" className='btn bg-danger text-white'>Add to cart  </button>
           </div>
         </Card.Body>

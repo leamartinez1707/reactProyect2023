@@ -6,9 +6,20 @@ const ItemList = ({ products }) => {
     return (
 
         <div className='row main-itemList d-flex'>
-            {products.map(pdts =>
-                <Item key={pdts.id} {...pdts}
-                />)}
+            {products && products.map((pdts) =>
+            (
+                <Item 
+                key={pdts.id}
+                product={pdts}
+                />
+                // {...pdts}
+
+                ))}
+            {/* {products.lenght < 1 &&
+            <h1>
+                Products not found..
+            </h1>
+            } */}
         </div>
     )
 }

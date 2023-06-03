@@ -23,6 +23,9 @@ const Rutas = () => {
     ]
 
     return (
+
+        <div className='page-container'>
+        <div className='content-wrap'>
         <BrowserRouter>
             <BarraNav navbar_items={navbar_items} />
             <Routes>
@@ -30,7 +33,11 @@ const Rutas = () => {
                 <Route path='/category/:id' element={<CategoryView />} />
                 <Route path='/item/:id' element={<ItemView/>} />
             </Routes>
+            
         </BrowserRouter>
+        </div>
+        </div>
+        
     )
 }
 
