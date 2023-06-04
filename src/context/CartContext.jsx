@@ -1,23 +1,24 @@
 import { useContext, useState, createContext } from 'react'
 import { existsCart, unifyItems } from '../helpers/helper'
 
-const CartContext = createContext();
+// const CartContext = createContext();
 
-export const CartProvider = () => useContext(CartContext);
+// export const CartProvider = () => useContext(CartContext);
+export const CartProvider = createContext("")
 
-const CartState = ({ children }) => {
+const CartContext = ({ children }) => {
 
     const [cart, setCart] = useState([]);
 
+    // const addCart = (product) => {
+    //     setCart([...cart, product])
+    // }
+
     const addCart = (item) => {
-        if (existsCart(cart, item)) {
-            setCart(unifyItems(cart, item));
-            alert('Producto ya existe en carrito')
-            return;
-        }
         setCart([...cart, item])
         alert('Producto agregado al carrito')
     }
+
     const deleteItem = (id) => {
         let newCart = cart.filter((e) => e.id !== id)
         setCart(newCart)
@@ -34,7 +35,7 @@ const CartState = ({ children }) => {
                 cart,
                 addCart,
                 cleanCart,
-                deleteItem
+                deleteItem,
             }}
         >
             {children}
@@ -42,4 +43,4 @@ const CartState = ({ children }) => {
     )
 }
 
-export default CartState
+export default CartContext

@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import BarraNav from '../components/navbar/BarraNav'
 import ItemView from '../pages/ItemView'
 import CategoryView from '../pages/CategoryView'
+import CartView from '../pages/CartView'
 
 const Rutas = () => {
 
@@ -32,6 +33,7 @@ const Rutas = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='/category/:id' element={<CategoryView />} />
                 <Route path='/item/:id' element={<ItemView/>} />
+                <Route path='/cart' element={<CartView/>} />
             </Routes>
             
         </BrowserRouter>

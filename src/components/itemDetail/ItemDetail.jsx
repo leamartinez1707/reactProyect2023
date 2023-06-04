@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount/ItemCount';
 
-const ItemDetail = ({item}) => {
+const ItemDetail = ({ item }) => {
 
   return (
 
@@ -24,10 +24,14 @@ const ItemDetail = ({item}) => {
           <Card.Text>
             {item.stock >= 1 ? 'In stock' : 'No stock'}
           </Card.Text>
+          <Card.Text>
+            {'Avaible: '}
+            {item.stock}
+          </Card.Text>
           <div>
-            <ItemCount item={item}/>
-            <button variant="danger" className='btn bg-danger text-white'>Add to cart  </button>
+            <ItemCount item={item} />
           </div>
+
         </Card.Body>
       </Card>
     </div>

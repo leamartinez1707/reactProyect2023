@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 
 const Item = ({ 
-    product: {id, title, img, price, stock, description },}) =>{ 
+    product: {id, title, img, price, stock, description},}) =>{ 
 
     const navigate = useNavigate()
     return (

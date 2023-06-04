@@ -7,11 +7,9 @@ const ItemDetailContainer = () => {
 
   const { id } = useParams();
   const {product, fetchGetProduct} = useFirebase();
-  console.log(id)
 
   useEffect(() => {
     fetchGetProduct({id})
-    console.log(product)
   },[])
 
   return (
