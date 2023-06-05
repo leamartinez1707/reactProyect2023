@@ -1,34 +1,31 @@
 import React from 'react'
-import { getProductsByCategory } from '../../productsAsync'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import useFirebase from '../../hooks/useFirebase'
+import { useEffect } from 'react'
 import ItemList from '../itemList/ItemList'
 import Spinner from '../spinnerLoad/Spinner'
 
-const ItemListById = () => {
+const ItemListById = ({ filter }) => {
 
-    const [loading, setLoading] = useState(false);
-    const [products, setProducts] = useState([])
-    const { id } = useParams();
+    const { products, fetchGetProducts, loading } = useFirebase();
 
     useEffect(() => {
-        setLoading(true)
-        getProductsByCategory(id)
-            .then(response => {
-                setProducts(response)
-                setLoading(false)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [id])
+
+        setTimeout(() => {
+            fetchGetProducts();
+        }, 1000);
+
+    }, [filter])
+
+    const filtered = filter
+        ? products.filter((e) => e.categoryId === filter)
+        : products;
 
     return (
 
         <div className='itemList-prod'>
             {loading && <Spinner />}
             {!loading &&
-                <ItemList products={products} />
+                <ItemList products={filtered} />
             }
         </div>
     );

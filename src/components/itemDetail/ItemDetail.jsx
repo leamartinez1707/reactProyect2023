@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount/ItemCount';
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ item, addCart}) => {
 
   return (
 
@@ -25,12 +25,15 @@ const ItemDetail = ({ item }) => {
             {item.stock >= 1 ? 'In stock' : 'No stock'}
           </Card.Text>
           <Card.Text>
-            {'Avaible: '}
+            {'Available: '}
             {item.stock}
           </Card.Text>
           <div>
-            <ItemCount item={item} />
+            <ItemCount item={item} addCart={addCart}/>
           </div>
+          <Card.Text>
+            
+          </Card.Text>
 
         </Card.Body>
       </Card>

@@ -4,7 +4,7 @@ import { existsCart, unifyItems } from '../helpers/helper'
 // const CartContext = createContext();
 
 // export const CartProvider = () => useContext(CartContext);
-export const CartProvider = createContext("")
+export const CartProvider = createContext();
 
 const CartContext = ({ children }) => {
 
@@ -14,9 +14,11 @@ const CartContext = ({ children }) => {
     //     setCart([...cart, product])
     // }
 
+
     const addCart = (item) => {
         setCart([...cart, item])
         alert('Producto agregado al carrito')
+        console.log(cart)
     }
 
     const deleteItem = (id) => {
@@ -30,17 +32,15 @@ const CartContext = ({ children }) => {
 
     return (
 
-        <CartContext.Provider
+        <CartProvider.Provider
             value={{
                 cart,
                 addCart,
-                cleanCart,
-                deleteItem,
             }}
         >
             {children}
-        </CartContext.Provider>
+        </CartProvider.Provider>
     )
 }
 
-export default CartContext
+export default CartContext;

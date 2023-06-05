@@ -23,6 +23,19 @@ const useFirebase = () => {
             setLoading(false)
         }
     }
+    const fetchGetCategory = async ({id}) => {
+        setLoading(true)
+        try {
+            const data = collection(db, "productos", id)
+            const col = await getDocs(data)
+            const response = col.docs.map(doc => doc = { id: doc.categoryId, ...doc.data() })
+            setProducts(response)
+            console.log(response)
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+        }
+    }
 
     const fetchGetProduct = async ({ id }) => {
         setLoading(true)
@@ -56,7 +69,8 @@ const useFirebase = () => {
         loading,
         fetchCreateTicket,
         fetchGetProduct,
-        fetchGetProducts
+        fetchGetProducts,
+        fetchGetCategory
     }
 }
 
