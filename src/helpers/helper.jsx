@@ -10,5 +10,5 @@ export const unifyItems = (cart, item) => {
 }
 
 export const existsCart = (cart, item) => {
-    return cart.some((e) => e.id === item.id)
+    return cart.some((a) => a.id === item.id)
 }

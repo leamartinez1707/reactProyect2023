@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,11 +6,19 @@ import Container from 'react-bootstrap/Container';
 import CartWidget from '../cartWidget/CartWidget'
 import logo from '../../images/logo.png'
 import './navbar.css';
+import { CartProvider } from '../../context/CartContext';
 
 const BarraNav = (props) => {
 
+  const {cart} = useContext(CartProvider)
   const { navbar_items } = props
   const navigate = useNavigate()
+
+  useEffect(() => {
+    
+   
+  }, [cart])
+
   return (
 
     <div className="navbar-div">

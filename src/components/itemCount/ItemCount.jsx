@@ -1,28 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { CartProvider } from '../../context/CartContext';
 
-const ItemCount = ({ item, addCart }) => {
+const ItemCount = ({ item }) => {
 
   // const {cart, addCart} = useContext(CartProvider)
 
   const { stock } = item
   const [counter, setCounter] = useState(1)
+  const { addCart } = useContext(CartProvider);
 
-
-  let product = item && {
-    ...item, counter,
-  }
+  const prod = {item, counter,}
 
   const ifAddCart = () => {
-    if (stock < 0 || counter <= 0) {
-      setCounter(1)
-    } else {
-      console.log(product)
-      addCart(product);
-    }
+    if (stock < 0 || counter <= 0) return;
+    addCart(prod);
+
   }
 
   const addCounter = () => {
-    if (stock - 1 > counter) {
+    if (stock -1 > counter) {
       setCounter(counter + 1)
     }
   }
@@ -43,7 +39,7 @@ const ItemCount = ({ item, addCart }) => {
       </div>
       <div>
         <button className='d-flex btn btn-danger' onClick={() =>
-          addCart({ item, counter })
+          ifAddCart(prod)
         }>
           Agregar al carrito
         </button>

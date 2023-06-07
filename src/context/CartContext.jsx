@@ -15,11 +15,7 @@ const CartContext = ({ children }) => {
     // }
 
 
-    const addCart = (item) => {
-        setCart([...cart, item])
-        alert('Producto agregado al carrito')
-        console.log(cart)
-    }
+    const addCart = (item) => setCart([...cart, item]);
 
     const deleteItem = (id) => {
         let newCart = cart.filter((e) => e.id !== id)

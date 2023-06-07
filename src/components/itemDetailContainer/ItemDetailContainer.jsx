@@ -2,12 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import ItemDetail from '../itemDetail/ItemDetail'
 import useFirebase from '../../hooks/useFirebase'
 import { useParams } from 'react-router-dom'
-import { CartProvider } from '../../context/CartContext';
 import Spinner from '../spinnerLoad/Spinner'
 
 const ItemDetailContainer = () => {
 
-  const { addCart } = useContext(CartProvider);
   const { id } = useParams();
   const { product, fetchGetProduct, loading } = useFirebase();
 
@@ -23,7 +21,7 @@ const ItemDetailContainer = () => {
 
       {loading && <Spinner />}
       {!loading &&
-        <ItemDetail item={product} addCart={addCart} />
+        <ItemDetail item={product} />
       }
 
     </div>

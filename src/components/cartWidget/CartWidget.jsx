@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../../context/CartContext'
@@ -8,17 +8,24 @@ const CartWidget = () => {
 
   const { cart } = useContext(CartProvider);
 
+  useEffect(() => {
+    
+    console.log(cart)
+  }, [cart])
+  
+
   return (
 
     <>
-      <Link to="/cart">
+      
         <div className="bag-unit">
           <Button variant="outline-light">
             <box-icon name='shopping-bag'></box-icon>
-            <span text='black' bg='light'>{cart.lenght}</span>
+            <Badge text='black' bg='light'>{cart.length}</Badge>
           </Button>
+
         </div>
-      </Link>
+      
     </>
   )
 }
