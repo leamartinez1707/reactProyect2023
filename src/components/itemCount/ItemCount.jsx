@@ -9,16 +9,14 @@ const ItemCount = ({ item }) => {
   const [counter, setCounter] = useState(1)
   const { addCart } = useContext(CartProvider);
 
-  const prod = {item, counter,}
-
   const ifAddCart = () => {
     if (stock < 0 || counter <= 0) return;
-    addCart(prod);
+    addCart(item);
 
   }
 
   const addCounter = () => {
-    if (stock -1 > counter) {
+    if (stock - 1 > counter) {
       setCounter(counter + 1)
     }
   }
@@ -39,7 +37,7 @@ const ItemCount = ({ item }) => {
       </div>
       <div>
         <button className='d-flex btn btn-danger' onClick={() =>
-          ifAddCart(prod)
+          ifAddCart(item)
         }>
           Agregar al carrito
         </button>

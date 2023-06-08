@@ -17,7 +17,6 @@ const useFirebase = () => {
             const col = await getDocs(data)
             const response = col.docs.map(doc => doc = { id: doc.id, ...doc.data() })
             setProducts(response)
-            console.log(response)
             setLoading(false)
         } catch (error) {
             setLoading(false)
@@ -30,11 +29,12 @@ const useFirebase = () => {
             const col = await getDocs(data)
             const response = col.docs.map(doc => doc = { id: doc.categoryId, ...doc.data() })
             setProducts(response)
-            console.log(response)
-            setLoading(false)
+            
+            
         } catch (error) {
             setLoading(false)
         }
+        setLoading(false)
     }
 
     const fetchGetProduct = async ({ id }) => {
@@ -44,11 +44,11 @@ const useFirebase = () => {
             const response = await getDoc(document)
             let result = response.data()
             setProduct({ id: response.id, ...result })
-            setLoading(false)
-
+            
         } catch (error) {
             alert('Error al obtener un producto')
         }
+        setLoading(false)
     };
 
     const fetchCreateTicket = async ({ data }) => {

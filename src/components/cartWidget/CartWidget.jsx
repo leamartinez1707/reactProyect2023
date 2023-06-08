@@ -2,16 +2,17 @@ import React, { useContext, useEffect } from 'react'
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../../context/CartContext'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CartWidget = () => {
 
-  const { cart } = useContext(CartProvider);
+  const { cart, countProds } = useContext(CartProvider);
+  const navigate = useNavigate()
 
   useEffect(() => {
     
-    console.log(cart)
-  }, [cart])
+    console.log(countProds)
+  }, [countProds])
   
 
   return (
@@ -19,9 +20,9 @@ const CartWidget = () => {
     <>
       
         <div className="bag-unit">
-          <Button variant="outline-light">
+          <Button onClick={() => navigate(`/cart`)} variant="outline-light">
             <box-icon name='shopping-bag'></box-icon>
-            <Badge text='black' bg='light'>{cart.length}</Badge>
+            <Badge text='black' bg='light'>{countProds}</Badge>
           </Button>
 
         </div>

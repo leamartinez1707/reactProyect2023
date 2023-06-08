@@ -1,32 +1,45 @@
 import React, { useContext, useEffect } from 'react'
 import { CartProvider } from '../../context/CartContext'
+import CartItem from '../cartItems/CartItem'
 
 const CartBody = () => {
 
-  const {cart} = useContext(CartProvider)
+  const { deleteItem, cart, total, countProds } = useContext(CartProvider)
 
   useEffect(() => {
     
-    console.log(cart)
+    
   }, [cart])
+  
 
   return (
-    <div>
-        
-        <h1>Cart body</h1>
-        {/* <div>
-          {cart.map((item) => (
-            <Item inCart key={item.price} {...item}/>
-          ))}
-          
-        </div> */}
-      <div>
+    <>
+    <div className='cart-body'>
+    <div className='row'>
 
-      <h1>Tengo en carrito : {cart.length}</h1>
+      <div className='col-12 m-5'>
+        <h1>Tengo en carrito : {cart.length}</h1>
       </div>
-        
     </div>
-  )
+
+      <div className="row">
+
+        <div className='itemList-prod col-6'>
+          {cart.map((item) => (
+            <CartItem deleteItem={deleteItem} key={item.id} {...item} />
+          ))}
+        </div>
+
+        <div className='cart-body bg-warning'>
+          <h1>Total de productos:  {countProds}</h1>
+          <h2>Precio a pagar: $ {total}</h2>
+        </div>
+
+      </div>
+      </div>
+      </>
+
+      )
 }
 
-export default CartBody
+      export default CartBody

@@ -2,6 +2,7 @@ export const unifyItems = (cart, item) => {
 
     return cart.map((e) => {
         if(e.id === item.id){
+            console.log(e)
             e.counter = item.counter
             e.stock = item.stock
         }

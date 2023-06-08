@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ItemDetail from '../itemDetail/ItemDetail'
 import useFirebase from '../../hooks/useFirebase'
 import { useParams } from 'react-router-dom'
@@ -10,14 +10,16 @@ const ItemDetailContainer = () => {
   const { product, fetchGetProduct, loading } = useFirebase();
 
   useEffect(() => {
-    setTimeout(() => {
-      fetchGetProduct({ id })
-    }, 1000);
+    fetchGetProduct({ id })
   }, [])
+  
+  
 
   return (
     <div className='detailContainer'>
-      <h1 className='m-2 p-2'>Information about the product</h1>
+      <div className="title-h1">
+        <h1 className='m-2 p-4 text-danger'>Information about the product</h1>
+      </div>
 
       {loading && <Spinner />}
       {!loading &&

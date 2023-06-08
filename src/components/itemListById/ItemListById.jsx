@@ -12,7 +12,7 @@ const ItemListById = ({ filter }) => {
 
         setTimeout(() => {
             fetchGetProducts();
-        }, 1000);
+        }, 0);
 
     }, [filter])
 

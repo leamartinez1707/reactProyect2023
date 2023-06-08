@@ -6,7 +6,6 @@ import ItemListById from '../components/itemListById/ItemListById'
 const CategoryView = () => {
 
   const {categoryId} = useParams();
-  console.log({categoryId})
 
   return (
 
