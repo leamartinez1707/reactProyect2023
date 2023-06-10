@@ -1,19 +1,21 @@
-.item-detail{
+.item-detail {
     display: flex;
     justify-content: center;
 }
-.main-itemList{
+
+.main-itemList {
     display: flex;
     justify-content: center;
     padding: 20px;
     width: 80%;
 }
-.card-item{
-    margin: 25px;
+
+.card-item {
+    margin: 10px 10px;
     width: 11rem;
-    padding: 0;
 }
-.itemList-prod{
+
+.itemList-prod {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,24 +23,27 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .main-itemList{
-        width: 100%;
+    .main-itemList {
+        width: 80%;
     }
-    .card-item{
+
+    .card-item {
         display: flex;
         width: 8rem;
-        margin: 5px;
-        padding: 1px;
+        margin: 2px auto;
         justify-content: center;
     }
-    .card-text{
-        font-size: 0.4rem;
-    }
-    .title-h1 h1{
+
+    .card-title {
         font-size: 1rem;
     }
-    .card-title{
+
+    .card-text {
         font-size: 0.6rem;
+    }
+
+    .title-h1 h1 {
+        font-size: 1rem;
     }
 
     .btn-verMas {
@@ -51,33 +56,73 @@
         align-items: center;
     }
 }
-.footer-main{
+
+.footer-main {
     background-color: rgb(255, 255, 255);
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
-.page-container{
+
+.page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-.content-wrap{
+
+.content-wrap {
     flex: 1;
 }
-.hr-footer{
+
+.hr-footer {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 80%;
 }
-.hr-footer-two{
+
+.hr-footer-two {
     width: 60%;
 }
-.terms{
+
+.terms {
     display: flex;
     padding: 0.5rem;
     margin: 0.5rem;
+}
+
+.cart-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 80%;
+    border: solid 1px black;
+}
+
+.body-item {
+    display: flex;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.body-item img {
+    width: 50px;
+    height: 50px;
+    border: solid 1px;
+    justify-content: center;
+}
+
+.items_body {
+    margin: 0.2rem auto;
+    padding: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

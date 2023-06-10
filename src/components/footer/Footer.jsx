@@ -4,6 +4,8 @@ import '../styles.css'
 
 const Footer = () => {
 
+    const currentYear = new Date().getFullYear();
+
     return (
 
         <div className='footer-main'>
@@ -16,7 +18,9 @@ const Footer = () => {
                 </div >
                 <div className="row">
                     <div className="col d-flex justify-content-center">
-                        <button onClick={'https://www.instagram.com/leamartinez1707/'} className='btn social-media'><BsInstagram /></button>
+                    <button className='btn social-media'>
+                        <BsInstagram />
+                    </button>
                         <button className="btn social-media"><BsWhatsapp /></button>
                         <button className='btn social-media'><BsLinkedin/></button>
                     </div>
@@ -27,7 +31,7 @@ const Footer = () => {
                         <span className='terms'>Contact</span>
                         <span className='terms'>Terms and conditions</span>
                     </div>
-                    <div><p>©️2023 Leandro Martínez. All rights reserved.</p></div>
+                    <div><p>©️{currentYear} Leandro Martínez.</p></div>
                 </div >
                 <div className="row">
                     <div className="col d-flex p-column justify-content-center">

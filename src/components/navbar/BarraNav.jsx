@@ -6,18 +6,11 @@ import Container from 'react-bootstrap/Container';
 import CartWidget from '../cartWidget/CartWidget'
 import logo from '../../images/logo.png'
 import './navbar.css';
-import { CartProvider } from '../../context/CartContext';
 
 const BarraNav = (props) => {
 
-  const {cart} = useContext(CartProvider)
   const { navbar_items } = props
   const navigate = useNavigate()
-
-  useEffect(() => {
-    
-   
-  }, [cart])
 
   return (
 

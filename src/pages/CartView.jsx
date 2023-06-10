@@ -3,7 +3,7 @@ import CartBody from '../components/cartBody/CartBody'
 
 const CartView = () => {
   return (
-    <div className='d-flex mt-4 justify-content-center'>
+    <div className='cart-view'>
         <CartBody/>
     </div>
   )

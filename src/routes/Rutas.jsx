@@ -6,6 +6,7 @@ import ItemView from '../pages/ItemView'
 import CategoryView from '../pages/CategoryView'
 import CartView from '../pages/CartView'
 import CartProvider from '../context/CartContext'
+import ErrorView from '../pages/ErrorView'
 
 const Rutas = () => {
 
@@ -36,6 +37,7 @@ const Rutas = () => {
                 <Route path='/category/:categoryId' element={<CategoryView />} />
                 <Route path='/item/:id' element={<ItemView/>} />
                 <Route path='/cart' element={<CartView/>} />
+                <Route path='*' element={<ErrorView/>} />
             </Routes>
             </CartProvider>
         </BrowserRouter>

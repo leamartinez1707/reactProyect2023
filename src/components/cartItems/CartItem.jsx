@@ -1,35 +1,24 @@
-import React, {useEffect} from 'react'
-import { useContext } from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-// import { CartProvider } from '../../context/CartContext';
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { GiCancel } from 'react-icons/gi'
+import { CartProvider } from '../../context/CartContext';
 
-const CartItem = ({ id, title, img, price, count, deleteItem }) => {
+const CartItem = (item) => {
 
-  // const { deleteItem, total } = useContext(CartProvider)
-
+  const { deleteItem } = useContext(CartProvider)
+  const navigate = useNavigate();
 
   return (
 
-    <Card
-      className='card-item'>
-      <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-100'
-      />
-      <Card.Body>
-        <Card.Title className=''>{title}</Card.Title>
-        <Card.Text>
-          {'Price $'}
-          {price}
-        </Card.Text>
-        <Card.Text>
-          {count}
-        </Card.Text>
+    <div className='body-item' style={{ cursor: 'pointer' }}>
 
-        <div className='d-flex justify-content-center align-items-center'>
-          <Button className='btn-verMas' variant="danger" onClick={deleteItem}>Delete item</Button>
-        </div>
-      </Card.Body>
-    </Card>
+      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><img src={item.img} alt="Image description" /></div>
+      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h3>{item.title}</h3></div>
+      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h4>${item.count * item.price}</h4></div>
+      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h4>Units: {item.count}</h4></div>
+      <span className='items_body' onClick={() => deleteItem(item.id)}><GiCancel /></span>
+    </div>
+
   );
 };
 

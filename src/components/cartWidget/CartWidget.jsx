@@ -6,33 +6,22 @@ import { useNavigate } from 'react-router-dom';
 
 const CartWidget = () => {
 
-  const { cart, countProds } = useContext(CartProvider);
-  const navigate = useNavigate()
+  const { getTotalQuantity } = useContext(CartProvider);
+  const total = parseInt(getTotalQuantity(), 10);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    
-    console.log(countProds)
-  }, [countProds])
-  
+
+  }, [total])
 
   return (
-
-    <>
-      
-        <div className="bag-unit">
-          <Button onClick={() => navigate(`/cart`)} variant="outline-light">
-            <box-icon name='shopping-bag'></box-icon>
-            <Badge text='black' bg='light'>{countProds}</Badge>
-          </Button>
-
-        </div>
-      
-    </>
+    <div className="bag-body">
+      <Button onClick={() => navigate(`/cart`)} variant="outline-light">
+        <box-icon name='shopping-bag'></box-icon>
+        <Badge text='black' bg='light'>{total}</Badge>
+      </Button>
+    </div>
   )
 }
 
 export default CartWidget
-
-
-// rafce
-

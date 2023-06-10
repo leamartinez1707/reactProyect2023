@@ -1,7 +1,7 @@
 export const unifyItems = (cart, item) => {
 
     return cart.map((e) => {
-        if(e.id === item.id){
+        if (e.id === item.id) {
             console.log(e)
             e.counter = item.counter
             e.stock = item.stock
@@ -13,3 +13,8 @@ export const unifyItems = (cart, item) => {
 export const existsCart = (cart, item) => {
     return cart.some((a) => a.id === item.id)
 }
+export const validateForm = (e) => {
+
+    return e.some((camp) => camp === "")
+}
+

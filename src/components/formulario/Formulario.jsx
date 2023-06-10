@@ -1,39 +1,154 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useContext, useState } from 'react'
+import useFirebase from '../../hooks/useFirebase';
+import { CartProvider } from '../../context/CartContext';
+import { validateForm } from '../../helpers/helper'
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const Formulario = () => {
 
-    const {total, compras} = props;
+const Input = ({
+    type,
+    name,
+    value,
+    inputClassName,
+    onChange,
+    onBlur,
+    placeholder,
+    error,
+}) => {
+    return (
+        <div>
+            <input
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                onBlur={(e) => onBlur(e)}
+                className={inputClassName} //{`form-control ${error.nombre && "is-invalid"}`}
+                placeholder={placeholder}
+            />
+            {error.name && (
+                <h6 className="text-danger my-2 text-uppercase">{error.name}</h6>
+            )}
+        </div>
+    );
+};
+
+const Formulario = ({ purchase }) => {
+
+
+    const { cart, cleanCart, getTotalPrice } = useContext(CartProvider);
+    const { fetchCreateTicket } = useFirebase();
+    const [error, setError] = useState({});
+    const total = getTotalPrice();
+
 
     const [form, setForm] = useState({
 
-        buyer:{
-            email:'',
-            nombre:'',
-            apellido:'',
-            telefono:''
+        buyer: {
+            Email: '',
+            Name: '',
+            Lastname: '',
+            Phone: ''
         },
-        total,
-        items:compras
-    })
+        total: total,
+        items: purchase,
+    });
 
-    const handleChange = () => {
+    const {
+        buyer: { Email, Name, Lastname, Phone }, } = form;
 
-        
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm([Email, Name, Lastname, Phone])) {
+            Swal.fire({
+                title: "Oops!",
+                text: "Please, complete all fields",
+                icon: "error",
+            });
+            return;
+        }
+        if (cart.length == 0) {
+            Swal.fire({
+                title: 'Cart is empty!',
+                text: 'Add products on cart and try again',
+                icon: 'warning'
+            })
+        }
+        if (cart.length > 0) {
+            Swal.fire({
+                title: "Great!!",
+                text: "Your order was sucefully acepted, verify your email for details.",
+                icon: "success",
+            });
+            fetchCreateTicket({ data: form });
+            cleanCart();
+            setForm('')
+        }
+        };
+
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setForm({
+                ...form,
+                buyer: {
+                    ...form.buyer,
+                    [name]: value,
+                },
+            });
+        }
+        const handleBlur = (e) => {
+            const { value, name } = e.target;
+            if (value === "") {
+                setError({ ...error, [name]: "This field is required" });
+                return;
+            }
+            setError({});
+        };
+
+
+
+        return (
+            <form onSubmit={onSubmit} className="container border">
+                <h5 className="d-flex justify-content-left m-4">Your information: </h5>
+                {Object.keys(form.buyer).map((key, index) => (
+                    <Input
+                        key={index}
+                        className="mb-3"
+                        type="text"
+                        name={`${key}`}
+                        value={key.value}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        inputClassName={`form-control ${error[key] && "is-invalid"}`}
+                        placeholder={`${key}`}
+                        error={error}
+                    />
+                ))}
+
+                <div className="border row d-flex p-2 m-2">
+                    <div className="col-6 col-lg-6 d-flex justify-content-center">
+                        <p className="fs-5 my-2">Total order: </p>
+                    </div>
+                    <div className="col-6 col-lg-6 d-flex justify-content-center">
+                        <p className="fs-5 my-2">${total}</p>
+                    </div>
+                    <div className='d-flex justify-content-center'>
+                    <button
+                        type="submit"
+                        className="btn btn-danger text-uppercase w-75 "
+                    >
+                        Send order
+                    </button>
+                    </div>
+                </div>
+
+                <Link to="/" className="btn btn-light text-uppercase my-2 w-50">
+                    Home
+                </Link>
+            </form>
+        );
     }
-    
-  return (
-    <div>
-        <form style={{display: 'flex', flexDirection:'column'}} action="">
-            <h1>Checkout</h1>
-        <input type="text" name='email' placeholder='email'/>
-        <input type="text" name='nombre' placeholder='nombre'/>
-        <input type="text" name='apellido' placeholder='apellido'/>
-        <input type="text" name='telefono' placeholder='telefono'/>
-        <button type='submit'>Comprar</button>
-        </form>
-    </div>
-  )
-}
 
-export default Formulario
+    export default Formulario;

@@ -1,5 +1,6 @@
 import { useContext, useState, createContext } from 'react'
 import { existsCart, unifyItems } from '../helpers/helper'
+import Swal from 'sweetalert2';
 
 // const CartContext = createContext();
 
@@ -11,37 +12,44 @@ const CartContext = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
     const [countProds, setCountProds] = useState(0);
+    const [counter, setCounter] = useState(1)
 
     const addCart = (prod) => {
         if (cart.find(item => item.id === prod.id)) {
 
             const products = cart.map(item =>
                 item.id === prod.id ?
-                    { ...item, count: item.count + 1 } : item);
-            alert('Ya existia')
-            setTotal(total + prod.price * prod.count)
-            setCountProds(countProds + prod.count)
+                    { ...item, count: item.count + counter } : item);
+            alert('Exists')
+
             return setCart([...products]);
-
         }
-        setTotal(total + prod.price * prod.count)
-        setCountProds(countProds + prod.count)
         setCart([...cart, prod])
-        alert('No existia')
+        alert('No exists')
     }
 
-    const deleteItem = (item) => {
-        const result = cart.filter(
-            prod => prod.id !== item.id)
-        console.log(result);
-        setTotal(total - item.price * item.count)
-        setCountProds(countProds - item.count)
-        setCart(result)
+    const deleteItem = (id) => {
+        setCart((prev) =>
+            prev.filter((item) => item.id !== id)
+        )
     }
+    const getTotalQuantity = () => {
+        return cart.reduce((prev, item) => {
+          return prev + item.count;
+        }, 0);
+      };
 
     const cleanCart = () => {
         setCart([])
     }
+
+    const getTotalPrice = () => {
+        let totalPrice = cart.reduce((acc, element) => {
+            return acc + element.count * element.price;
+        }, 0);
+
+        return totalPrice;
+    };
 
     return (
 
@@ -50,10 +58,15 @@ const CartContext = ({ children }) => {
                 cart,
                 addCart,
                 deleteItem,
+                cleanCart,
                 total,
                 setTotal,
                 countProds,
-                setCountProds
+                setCountProds,
+                counter,
+                setCounter,
+                getTotalPrice,
+                getTotalQuantity,
             }}
         >
             {children}
