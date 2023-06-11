@@ -46,22 +46,22 @@ const Formulario = ({ purchase }) => {
     const [form, setForm] = useState({
 
         buyer: {
-            Email: '',
-            Name: '',
-            Lastname: '',
-            Phone: ''
+            email: '',
+            name: '',
+            lastname: '',
+            phone: ''
         },
         total: total,
         items: purchase,
     });
 
     const {
-        buyer: { Email, Name, Lastname, Phone }, } = form;
+        buyer: { email, name, lastname, phone }, } = form;
 
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (validateForm([Email, Name, Lastname, Phone])) {
+        if (validateForm([email, name, lastname, phone])) {
             Swal.fire({
                 title: "Oops!",
                 text: "Please, complete all fields",
@@ -69,7 +69,7 @@ const Formulario = ({ purchase }) => {
             });
             return;
         }
-        if (cart.length == 0) {
+        if (cart.length === 0) {
             Swal.fire({
                 title: 'Cart is empty!',
                 text: 'Add products on cart and try again',
@@ -77,15 +77,10 @@ const Formulario = ({ purchase }) => {
             })
         }
         if (cart.length > 0) {
-            Swal.fire({
-                title: "Great!!",
-                text: "Your order was sucefully acepted, verify your email for details.",
-                icon: "success",
-            });
             fetchCreateTicket({ data: form });
             cleanCart();
-            setForm('')
         }
+        setForm()
         };
 
         const handleChange = (e) => {

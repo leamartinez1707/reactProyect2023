@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { collection, doc, getDoc, getDocs, addDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
+import Swal from 'sweetalert2'
 
 
 const useFirebase = () => {
@@ -21,20 +22,6 @@ const useFirebase = () => {
         } catch (error) {
             setLoading(false)
         }
-    }
-    const fetchGetCategory = async ({id}) => {
-        setLoading(true)
-        try {
-            const data = collection(db, "productos", id)
-            const col = await getDocs(data)
-            const response = col.docs.map(doc => doc = { id: doc.categoryId, ...doc.data() })
-            setProducts(response)
-            
-            
-        } catch (error) {
-            setLoading(false)
-        }
-        setLoading(false)
     }
 
     const fetchGetProduct = async ({ id }) => {
@@ -57,9 +44,13 @@ const useFirebase = () => {
             const col = collection(db, "ordenes")
             const order = await addDoc(col, data)
             setLoading(false)
-            console.log(order.id)
+            Swal.fire({
+                title: "Great!",
+                text: 'Order id: ' + (order.id),
+                icon: "success"
+            })
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     };
 
@@ -70,7 +61,6 @@ const useFirebase = () => {
         fetchCreateTicket,
         fetchGetProduct,
         fetchGetProducts,
-        fetchGetCategory
     }
 }
 

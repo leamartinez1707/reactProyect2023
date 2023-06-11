@@ -11,14 +11,13 @@ const CartItem = (item) => {
   return (
 
     <div className='body-item' style={{ cursor: 'pointer' }}>
-
-      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><img src={item.img} alt="Image description" /></div>
+      <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><img src={item.img} alt="Product img" /></div>
       <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h3>{item.title}</h3></div>
       <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h4>${item.count * item.price}</h4></div>
       <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h4>Units: {item.count}</h4></div>
       <span className='items_body' onClick={() => deleteItem(item.id)}><GiCancel /></span>
     </div>
-
+      
   );
 };
 
