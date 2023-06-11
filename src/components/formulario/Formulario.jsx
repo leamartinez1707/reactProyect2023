@@ -24,7 +24,7 @@ const Input = ({
                 value={value}
                 onChange={onChange}
                 onBlur={(e) => onBlur(e)}
-                className={inputClassName} //{`form-control ${error.nombre && "is-invalid"}`}
+                className={inputClassName}
                 placeholder={placeholder}
             />
             {error.name && (
@@ -47,6 +47,7 @@ const Formulario = ({ purchase }) => {
 
         buyer: {
             email: '',
+            emailConfirm: '',
             name: '',
             lastname: '',
             phone: ''
@@ -56,12 +57,12 @@ const Formulario = ({ purchase }) => {
     });
 
     const {
-        buyer: { email, name, lastname, phone }, } = form;
+        buyer: { email, emailConfirm, name, lastname, phone }, } = form;
 
 
     const onSubmit = (e) => {
         e.preventDefault();
-        if (validateForm([email, name, lastname, phone])) {
+        if (validateForm([email, emailConfirm, name, lastname, phone])) {
             Swal.fire({
                 title: "Oops!",
                 text: "Please, complete all fields",
@@ -75,75 +76,82 @@ const Formulario = ({ purchase }) => {
                 text: 'Add products on cart and try again',
                 icon: 'warning'
             })
+            return;
+        }
+        if (email !== emailConfirm) {
+            Swal.fire({
+                title: 'Email not confirmed',
+                text: 'Verify your email and try again',
+                icon: 'warning'
+            })
+            return;
         }
         if (cart.length > 0) {
             fetchCreateTicket({ data: form });
             cleanCart();
+            return;
         }
-        setForm()
-        };
+    };
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setForm({
-                ...form,
-                buyer: {
-                    ...form.buyer,
-                    [name]: value,
-                },
-            });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            buyer: {
+                ...form.buyer,
+                [name]: value,
+            },
+        });
+    }
+    const handleBlur = (e) => {
+        const { value, name } = e.target;
+        if (value === "") {
+            setError({ ...error, [name]: "This field is required" });
+            return;
         }
-        const handleBlur = (e) => {
-            const { value, name } = e.target;
-            if (value === "") {
-                setError({ ...error, [name]: "This field is required" });
-                return;
-            }
-            setError({});
-        };
+        setError({});
+    };
 
+    return (
+        <form onSubmit={onSubmit} className="container border">
+            <h5 className="d-flex justify-content-left m-4">Your information: </h5>
+            {Object.keys(form.buyer).map((key, index) => (
+                <Input
+                    key={index}
+                    className="mb-3"
+                    type="text"
+                    name={`${key}`}
+                    value={key.value}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    inputClassName={`form-control ${error[key] && "is-invalid"}`}
+                    placeholder={`${key}`}
+                    error={error}
+                />
+            ))}
 
-
-        return (
-            <form onSubmit={onSubmit} className="container border">
-                <h5 className="d-flex justify-content-left m-4">Your information: </h5>
-                {Object.keys(form.buyer).map((key, index) => (
-                    <Input
-                        key={index}
-                        className="mb-3"
-                        type="text"
-                        name={`${key}`}
-                        value={key.value}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        inputClassName={`form-control ${error[key] && "is-invalid"}`}
-                        placeholder={`${key}`}
-                        error={error}
-                    />
-                ))}
-
-                <div className="border row d-flex p-2 m-2">
-                    <div className="col-6 col-lg-6 d-flex justify-content-center">
-                        <p className="fs-5 my-2">Total order: </p>
-                    </div>
-                    <div className="col-6 col-lg-6 d-flex justify-content-center">
-                        <p className="fs-5 my-2">${total}</p>
-                    </div>
-                    <div className='d-flex justify-content-center'>
+            <div className="border row d-flex p-2 m-2">
+                <div className="col-6 col-lg-6 d-flex justify-content-center">
+                    <p className="fs-5 my-2">Total order: </p>
+                </div>
+                <div className="col-6 col-lg-6 d-flex justify-content-center">
+                    <p className="fs-5 my-2">${total}</p>
+                </div>
+                <div className='d-flex justify-content-center'>
                     <button
                         type="submit"
                         className="btn btn-danger text-uppercase w-75 "
                     >
                         Send order
                     </button>
-                    </div>
                 </div>
+            </div>
 
-                <Link to="/" className="btn btn-light text-uppercase my-2 w-50">
-                    Home
-                </Link>
-            </form>
-        );
-    }
+            <Link to="/" className="btn btn-light text-uppercase my-2 w-50">
+                Home
+            </Link>
+        </form>
+    );
+}
 
-    export default Formulario;
+export default Formulario;

@@ -1,5 +1,4 @@
-import { useContext, useState, createContext } from 'react'
-import { existsCart, unifyItems } from '../helpers/helper'
+import { useState, createContext } from 'react'
 import Swal from 'sweetalert2';
 
 // const CartContext = createContext();
@@ -20,12 +19,20 @@ const CartContext = ({ children }) => {
             const products = cart.map(item =>
                 item.id === prod.id ?
                     { ...item, count: item.count + counter } : item);
-            alert('Exists')
-
+            Swal.fire({
+                title: "Added successfully",
+                text: 'You added a product already in cart, it was successfully modified.',
+                icon: "success"
+            })
             return setCart([...products]);
+
         }
         setCart([...cart, prod])
-        alert('No exists')
+        Swal.fire({
+            title: "Added successfully",
+            text: 'Your product was successfully added in cart.',
+            icon: "success"
+        })
     }
 
     const deleteItem = (id) => {
@@ -35,9 +42,9 @@ const CartContext = ({ children }) => {
     }
     const getTotalQuantity = () => {
         return cart.reduce((prev, item) => {
-          return prev + item.count;
+            return prev + item.count;
         }, 0);
-      };
+    };
 
     const cleanCart = () => {
         setCart([])

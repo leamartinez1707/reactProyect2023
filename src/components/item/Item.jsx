@@ -12,22 +12,17 @@ const Item = ({
 
         <Card
             className='card-item'>
-            <Card.Img variant="top" src={img} alt='Description image' className='w-100 h-100'
-            />
+            <Card.Img variant="top" src={img} alt='Description image'/>
             <Card.Body>
                 <Card.Title className=''>{title}</Card.Title>
-                <Card.Text className=''>
-                    {description}
-                </Card.Text>
                 <Card.Text>
-                    {'Price $'}
-                    {price}
+                    ${price}
                 </Card.Text>
                 <Card.Text>
                     {stock >= 1 ? 'In stock' : 'No stock'}
                 </Card.Text>
                 <div className='d-flex justify-content-center align-items-center'>
-                    <Button className='btn-verMas' variant="danger" onClick={() => navigate(`/item/${id}`)}>Item detail</Button>
+                    <Button className='btn-verMas' variant="danger" onClick={() => navigate(`/item/${id}`)}>View detail</Button>
                 </div>
             </Card.Body>
         </Card>
