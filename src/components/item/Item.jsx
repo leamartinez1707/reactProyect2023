@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Item = ({ 
     
-    product: {id, title, img, price, stock, description, count}}) =>{ 
+    product: {id, title, img, price, stock}}) =>{ 
 
     const navigate = useNavigate()
     return (
