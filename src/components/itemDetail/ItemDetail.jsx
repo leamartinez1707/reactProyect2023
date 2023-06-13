@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount/ItemCount';
 
-const ItemDetail = ({ item, addCart}) => {
+const ItemDetail = ({ item, addCart }) => {
 
   return (
 
     <div className='item-detail'>
 
-      <Card className='m-4 p-2'
-        style={{ width: '15rem' }}>
+      <Card className='m-4 p-2 card-detail'>
         <Card.Img variant="center" src={item.img} alt='Description image' className='w-100 h-100'
         />
         <Card.Body>
@@ -29,7 +28,7 @@ const ItemDetail = ({ item, addCart}) => {
             {item.stock}
           </Card.Text>
           <div className=''>
-            <ItemCount item={item} addCart={addCart}/>
+            <ItemCount item={item} addCart={addCart} />
           </div>
         </Card.Body>
       </Card>
