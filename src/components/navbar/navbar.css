@@ -1,8 +1,18 @@
-.navbar-div{
+.navbar-div {
     width: 100%;
 }
-.nav_img:hover{
+
+.nav_img:hover {
     cursor: pointer;
     transition: 1s;
     transform: scale(1.05);
+}
+
+.nav-cat:hover {
+    text-decoration: underline;
+    transition: 0.2s;
+    transform: scale(1.1);
+}
+.nav-cat {
+    margin: 0.5rem;
 }

@@ -18,11 +18,17 @@ const Footer = () => {
                 </div >
                 <div className="row">
                     <div className="col d-flex justify-content-center">
+                        <Link to={'https://www.instagram.com/leamartinez1707'} target='_blank'>
                         <button className='btn social-media'>
                             <BsInstagram />
-                        </button>
-                        <button className="btn social-media"><BsWhatsapp /></button>
-                        <button className='btn social-media'><BsLinkedin /></button>
+                        </button></Link>
+
+                        <Link to={'https://wa.me/59895220063'} target='_blank'>
+                            <button className="btn social-media"><BsWhatsapp /></button>
+                        </Link>
+                        <Link to={'https://www.linkedin.com/in/leandro-mart%C3%ADnez-03501a202/'} target='_blank'>
+                            <button className='btn social-media'>
+                                <BsLinkedin /></button></Link>
                     </div>
                 </div>
                 <div className="row">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
@@ -25,8 +25,8 @@ const BarraNav = (props) => {
           <ul className="navbar-nav">
             {
               navbar_items.map(({ path, name }, index) => (
-                <li key={index} className="nav-item">
-                  <NavLink className={'nav-link'} to={path}>{name}</NavLink>
+                <li key={index} className="nav-item nav-cat">
+                  <NavLink className={'nav-link '} to={path}>{name}</NavLink>
                 </li>
               ))
             }

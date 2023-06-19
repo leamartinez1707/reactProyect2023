@@ -2,6 +2,7 @@ import Rutas from './routes/Rutas';
 import './App.css';
 import './components/styles.css'
 import Footer from './components/footer/Footer'
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
@@ -9,7 +10,9 @@ function App() {
 
     <div className="App">
       <Rutas />
+      <BrowserRouter>
       <Footer />
+      </BrowserRouter>
     </div>
 
   );

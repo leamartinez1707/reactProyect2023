@@ -4,6 +4,7 @@ import { CartProvider } from '../../context/CartContext';
 import { validateForm } from '../../helpers/helper'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Timestamp } from 'firebase/firestore';
 
 
 const Input = ({
@@ -54,6 +55,7 @@ const Formulario = ({ purchase }) => {
         },
         total: total,
         items: purchase,
+        date: Timestamp.fromDate(new Date()),
     });
 
     const {
