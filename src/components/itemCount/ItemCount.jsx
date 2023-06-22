@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CartProvider } from '../../context/CartContext';
 import { BsCartPlusFill } from 'react-icons/bs';
 
@@ -10,11 +10,8 @@ const ItemCount = ({ item }) => {
   const { addCart, counter, setCounter } = useContext(CartProvider);
 
   const ifAddCart = () => {
-    if (stock < 0 || counter <= 0) return;
-    if(stock < count) {
-      alert('No hay stock')
-    }
-    addCart({...item, count: count + counter - 1});
+
+    addCart({ ...item, count: count + counter - 1, stock: stock - counter });
     setCounter(1)
   }
 
@@ -38,11 +35,11 @@ const ItemCount = ({ item }) => {
         <button className='btn m-2' onClick={subtractCounter}>-
         </button>
       </div>
-      <div className='d-flex btn btn-danger justify-content-center align-items-center'>
-        <button className='d-flex btn btn-danger justify-content-center align-items-center' onClick={() =>
-          ifAddCart(item)
-        }>
-        <BsCartPlusFill/> 
+      <div className='d-flex btn btn-danger justify-content-center align-items-center' onClick={() =>
+        ifAddCart(item)
+      }>
+        <button className='d-flex btn btn-danger justify-content-center align-items-center' >
+          <BsCartPlusFill />
         </button>
       </div>
     </>

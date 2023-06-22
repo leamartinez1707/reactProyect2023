@@ -15,26 +15,26 @@ const BarraNav = (props) => {
   return (
 
     <div className="navbar-div">
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand onClick={() => navigate(`/`)} className='nav_img'>
-          <img src={logo} alt='Brand logo' width="50" height="50" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <ul className="navbar-nav">
-            {
-              navbar_items.map(({ path, name }, index) => (
-                <li key={index} className="nav-item nav-cat">
-                  <NavLink className={'nav-link '} to={path}>{name}</NavLink>
-                </li>
-              ))
-            }
-          </ul>
-        </Navbar.Collapse>
-        <CartWidget />
-      </Container>
-    </Navbar>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand onClick={() => navigate(`/`)} className='nav_img'>
+            <img src={logo} alt='Brand logo' width="50" height="50" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <ul className="navbar-nav">
+              {
+                navbar_items.map(({ path, name }, index) => (
+                  <li key={index} className="nav-item nav-cat">
+                    <NavLink className={'nav-link '} to={path}>{name}</NavLink>
+                  </li>
+                ))
+              }
+            </ul>
+          </Navbar.Collapse>
+          <CartWidget />
+        </Container>
+      </Navbar>
     </div>
   )
 }

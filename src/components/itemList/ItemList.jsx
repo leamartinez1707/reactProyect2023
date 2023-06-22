@@ -8,18 +8,11 @@ const ItemList = ({ products }) => {
         <div className='row main-itemList d-flex'>
             {products && products.map((pdts) =>
             (
-                <Item 
-                key={pdts.id}
-                product={pdts}
+                <Item
+                    key={pdts.id}
+                    product={pdts}
                 />
-                // {...pdts}
-
-                ))}
-            {/* {products.lenght < 1 &&
-            <h1>
-                Products not found..
-            </h1>
-            } */}
+            ))}
         </div>
     )
 }

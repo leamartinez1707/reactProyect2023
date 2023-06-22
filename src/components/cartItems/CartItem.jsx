@@ -17,7 +17,7 @@ const CartItem = (item) => {
       <div className='items_body' onClick={() => navigate(`/item/${item.id}`)}><h4>Units: {item.count}</h4></div>
       <span className='items_body' onClick={() => deleteItem(item.id)}><GiCancel /></span>
     </div>
-      
+
   );
 };
 

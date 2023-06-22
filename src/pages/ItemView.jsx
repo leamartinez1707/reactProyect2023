@@ -4,7 +4,7 @@ import ItemDetailContainer from '../components/itemDetailContainer/ItemDetailCon
 const ItemView = () => {
 
   return (
-    <ItemDetailContainer/>
+    <ItemDetailContainer />
   );
 };
 

@@ -19,9 +19,9 @@ const Footer = () => {
                 <div className="row">
                     <div className="col d-flex justify-content-center">
                         <Link to={'https://www.instagram.com/leamartinez1707'} target='_blank'>
-                        <button className='btn social-media'>
-                            <BsInstagram />
-                        </button></Link>
+                            <button className='btn social-media'>
+                                <BsInstagram />
+                            </button></Link>
 
                         <Link to={'https://wa.me/59895220063'} target='_blank'>
                             <button className="btn social-media"><BsWhatsapp /></button>

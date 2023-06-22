@@ -3,7 +3,7 @@ import ErrorFound from '../components/error/ErrorFound'
 
 const ErrorView = () => {
   return (
-    <ErrorFound/>
+    <ErrorFound />
   )
 }
 

@@ -5,8 +5,8 @@ const Home = () => {
 
   return (
 
-      <ItemListContainer title={'Shop now'} />
-      
+    <ItemListContainer title={'Shop now'} />
+
   )
 }
 

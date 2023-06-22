@@ -18,10 +18,10 @@ const CartContext = ({ children }) => {
 
             const products = cart.map(item =>
                 item.id === prod.id ?
-                    { ...item, count: item.count + counter } : item);
+                    { ...item, count: item.count + counter, stock: item.stock - counter } : item);
             Swal.fire({
                 title: "Added successfully",
-                text: 'You added a product already in cart, it was successfully modified.',
+                text: 'You already have this product in cart, it was successfully modified.',
                 icon: "success"
             })
             return setCart([...products]);

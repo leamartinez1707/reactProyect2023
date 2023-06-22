@@ -31,7 +31,7 @@ const useFirebase = () => {
             const response = await getDoc(document)
             let result = response.data()
             setProduct({ id: response.id, ...result })
-            
+
         } catch (error) {
             alert('Error al obtener un producto')
         }

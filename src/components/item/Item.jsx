@@ -3,16 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 
-const Item = ({ 
-    
-    product: {id, title, img, price, stock}}) =>{ 
+const Item = ({
+
+    product: { id, title, img, price, stock } }) => {
 
     const navigate = useNavigate()
     return (
 
         <Card
             className='card-item'>
-            <Card.Img variant="top" src={img} alt='Description image'/>
+            <Card.Img variant="top" src={img} alt='Description image' />
             <Card.Body>
                 <Card.Title className=''>{title}</Card.Title>
                 <Card.Text>
