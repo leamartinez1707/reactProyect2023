@@ -15,20 +15,15 @@ const ItemListContainer = ({ title }) => {
 
   return (
 
-    <div className=''>
-
+    <>
       <div className="title-h1">
         <h1 className='m-2 p-4 text-danger'>{title}</h1>
       </div>
-
       {loading && <Spinner />}
       {!loading &&
-
-        <div className='itemList-prod'>
-          <ItemList products={products} />
-        </div>
+        <ItemList products={products} />
       }
-    </div>
+    </>
   )
 }
 

@@ -23,7 +23,7 @@ const BarraNav = (props) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <ul className="navbar-nav">
-              {
+              { 
                 navbar_items.map(({ path, name }, index) => (
                   <li key={index} className="nav-item nav-cat">
                     <NavLink className={'nav-link '} to={path}>{name}</NavLink>

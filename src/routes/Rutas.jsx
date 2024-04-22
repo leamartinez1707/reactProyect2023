@@ -26,25 +26,19 @@ const Rutas = () => {
     ]
 
     return (
+        <BrowserRouter>
+            <CartProvider>
+                <BarraNav navbar_items={navbar_items} />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/category/:categoryId' element={<CategoryView />} />
+                    <Route path='/item/:id' element={<ItemView />} />
+                    <Route path='/cart' element={<CartView />} />
+                    <Route path='*' element={<ErrorView />} />
+                </Routes>
+            </CartProvider>
 
-        <div className='page-container'>
-            <div className='content-wrap'>
-                <BrowserRouter>
-                    <CartProvider>
-                        <BarraNav navbar_items={navbar_items} />
-                        <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='/category/:categoryId' element={<CategoryView />} />
-                            <Route path='/item/:id' element={<ItemView />} />
-                            <Route path='/cart' element={<CartView />} />
-                            <Route path='*' element={<ErrorView />} />
-                        </Routes>
-                    </CartProvider>
-
-                </BrowserRouter>
-            </div>
-        </div>
-
+        </BrowserRouter>
     )
 }
 

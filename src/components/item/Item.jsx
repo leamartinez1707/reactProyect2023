@@ -11,8 +11,11 @@ const Item = ({
     return (
 
         <Card
-            className='card-item'>
-            <Card.Img variant="top" src={img} alt='Description image' />
+            className='card-item '
+        >
+            <Card.Img
+                className='mx-auto card-img'
+                variant="top" src={img} alt='Description image' />
             <Card.Body>
                 <Card.Title className=''>{title}</Card.Title>
                 <Card.Text>
